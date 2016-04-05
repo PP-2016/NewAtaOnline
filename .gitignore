@@ -64,5 +64,5 @@ target/
 # OsX Files
 .Ds_Store
 
-#DB
-db.sqlite3
+# SQLite
+*.sqlite*
