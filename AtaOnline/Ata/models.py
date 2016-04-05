@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 
-class Person(models.Model):
+class AbstractPerson(models.Model):
     """Models for AtaOnline's user."""
 
     username = models.CharField(max_length=50)
@@ -15,20 +15,27 @@ class Person(models.Model):
     name = models.CharField(max_length=50)
     admin = models.BooleanField()
 
+    class Meta:
+        """Abstract class needs a Meta."""
 
-class Student(models.Person, models.Model):
+        abstract = True
+
+
+class Student(AbstractPerson, models.Model):
     """Student's docstring."""
 
 
-class Professor(models.Person, models.Model):
+class Professor(AbstractPerson, models.Model):
     """Professor's docstring."""
 
     formation = models.CharField(max_length=200)
 
 
-# class Avaliation(models.Model):
-#     """Avaliation from a Professor for a Student's Notebook."""
-#     ata = Fo
+class Avaliation(models.Model):
+    """Avaliation from a Professor for a Student's Notebook."""
+
+    record = models.ForeignKey('Notebook')
+
 
 class Notebook(models.Model):
     """Student's Notebook for class of Experimental Fisics."""
@@ -36,4 +43,4 @@ class Notebook(models.Model):
     title = models.CharField(max_length=50)
     date = models.DateField(auto_now=True)
     content = models.CharField(max_length=150)
-    avaliation = models.OneToOneField()
+    grade = models.ForeignKey('Avaliation')
