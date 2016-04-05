@@ -40,7 +40,7 @@ DJANGO_APPS = (
 )
 
 ATAONLINE_APPS = (
-    'ata',
+    'Ata',
 )
 
 INSTALLED_APPS = DJANGO_APPS + ATAONLINE_APPS
