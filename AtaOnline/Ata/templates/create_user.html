@@ -1,0 +1,53 @@
+{% extends "main_base.html" %}
+{% load i18n %}
+{% block main_content %}
+    <div class="container">
+        <div class="col s6">
+            <div class="card s12 m3 right">
+                <div class="card-image">
+                    <img src="AtaOnline/static/images/ata_logo.png.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <form action="/create/" method="POST">
+                    {% csrf_token %}
+                        <div class="input-field col s3">
+                            <i class="fa fa-graduation-cap prefix"></i>
+                            <input id="registration" type="text" class="validate">
+                            <label for="registration">Matrícula</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">Nome</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input id="email" type="text" class="validate">
+                            <label for="email">Nome</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="fa fa-user prefix"></i>
+                            <input  id="username" name="username" type="text" class="validate">
+                            <label for="username">Nome de Usuário</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Senha</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="password2" type="password" class="validate">
+                            <label for="password2">Senha Novamente</labeol>
+                            </div>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Registrar
+                            <i class="material-icons right"></i>
+                            </button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock main_content %}
