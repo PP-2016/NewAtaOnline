@@ -45,12 +45,12 @@ class Login(View):
         return respond_view
 
     def get(self, request):
-        """Lolz."""
+        """Get Method for Login."""
         return render_to_response(
             'create_user.html', context_instance=RequestContext(request))
 
 
-class CreateUser(View):
+class SignUp(View):
     """Create user Professor or Student."""
 
     http_method_names = [u'get', u'post']
@@ -72,7 +72,8 @@ class CreateUser(View):
 
         new_student.save()
 
-        return render_to_response("Funcionou.html")
+        return render_to_response(
+            "Funcionou.html", context_instance=RequestContext(request))
 
     def get(self, request):
         """Get method for CreateUser."""
