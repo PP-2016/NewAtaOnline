@@ -1,8 +1,8 @@
 """Ata urls."""
 
 from django.conf.urls import url
-from . import views
-
+from .views import Login, Index
 urlpatterns = [
-    url(r'^$', views.index, name="index"),
+    url(r'^$', Index.as_view(), name="index"),
+    url(r'^login/$', Login.as_view(), name="login"),
 ]

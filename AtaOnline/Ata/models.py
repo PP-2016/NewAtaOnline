@@ -1,33 +1,21 @@
 """Models for Ata."""
 
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
-class AbstractPerson(models.Model):
-    """Models for AtaOnline's user."""
-
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    number_id = models.IntegerField()
-    email = models.EmailField(max_length=200)
-    name = models.CharField(max_length=50)
-    admin = models.BooleanField()
-
-    class Meta:
-        """Abstract class needs a Meta."""
-
-        abstract = True
-
-
-class Student(AbstractPerson, models.Model):
+class Student(User, models.Model):
     """Student's docstring."""
 
+    number_id = models.IntegerField()
 
-class Professor(AbstractPerson, models.Model):
+
+class Professor(User, models.Model):
     """Professor's docstring."""
 
+    number_id = models.IntegerField()
     formation = models.CharField(max_length=200)
 
 
@@ -42,5 +30,5 @@ class Notebook(models.Model):
 
     title = models.CharField(max_length=50)
     date = models.DateField(auto_now=True)
-    content = models.CharField(max_length=150)
+    content = models.CharField(max_length=250)
     grade = models.ForeignKey('Avaliation')
