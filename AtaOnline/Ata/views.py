@@ -65,7 +65,7 @@ class SignUp(View):
 
         new_student = Student()
         new_student.username = request_username
-        new_student.set_password(request_password)
+        new_student.password = request_password
         new_student.first_name = request_first_name
         new_student.number_id = request_number_id
         new_student.email = request_email

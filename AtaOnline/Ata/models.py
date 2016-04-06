@@ -6,15 +6,17 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Student(User, models.Model):
+class Student(models.Model):
     """Student's docstring."""
 
+    user = models.ForeignKey(User)
     number_id = models.IntegerField()
 
 
-class Professor(User, models.Model):
+class Professor(models.Model):
     """Professor's docstring."""
 
+    user = models.ForeignKey(User)
     number_id = models.IntegerField()
     formation = models.CharField(max_length=200)
 
