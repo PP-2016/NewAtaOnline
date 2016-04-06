@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from django.template import RequestContext
+from .models import Student
 
 # Create your views here.
 
@@ -39,6 +40,41 @@ class Login(View):
             else:
                 respond_view = render_to_response('UserOff.html')
         else:
-            respond_view = render_to_response('UserIsNone.html')
+            respond_view = render_to_response('create_user.html')
 
         return respond_view
+
+    def get(self, request):
+        """Lolz."""
+        return render_to_response(
+            'create_user.html', context_instance=RequestContext(request))
+
+
+class CreateUser(View):
+    """Create user Professor or Student."""
+
+    http_method_names = [u'get', u'post']
+
+    def post(self, request):
+        """Get all information and creat a user."""
+        request_username = request.POST.get('username')
+        request_password = request.POST.get('password')
+        request_first_name = request.POST.get('first_name')
+        request_number_id = request.POST.get('registration')
+        request_email = request.POST.get('email')
+
+        new_student = Student()
+        new_student.username = request_username
+        new_student.set_password(request_password)
+        new_student.first_name = request_first_name
+        new_student.number_id = request_number_id
+        new_student.email = request_email
+
+        new_student.save()
+
+        return render_to_response("Funcionou.html")
+
+    def get(self, request):
+        """Get method for CreateUser."""
+        return render_to_response(
+            'create_user.html', context_instance=RequestContext(request))
