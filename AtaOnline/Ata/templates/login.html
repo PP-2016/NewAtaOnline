@@ -3,10 +3,11 @@
 {% block main_content %}
     <div class="container">
         <div class="col s6">
-            <div class="card s12 m3 right">
-                <div class="card-image">
-                    <img src="static/images/ata_logo.png.jpg">
-                    <span class="card-title">Card Title</span>
+            <div class="card s12 m3">
+                <div class="card center">
+                    {% load static from staticfiles %}
+                    <img src="{% static 'images/ata_logo.png' %}" height="90" width="90"><br>
+                    <span class="card-title">Login</span>
                 </div>
                 <div class="card-content">
                     <form action="/login/" method="POST">
@@ -17,7 +18,7 @@
                             <label for="username">Nome de Usuário</label>
                         </div>
                         <div class="input-field col s3">
-                            <i class="fa2 fa-key prefix"></i>
+                            <i class="fa fa-key prefix"></i>
                             <input id="password" type="password" class="validate">
                             <label for="password">Senha</label>
                         </div>
