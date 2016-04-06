@@ -10,19 +10,19 @@
                     <span class="card-title">Cadastre-se</span>
                 </div>
                 <div class="card-content">
-                    <form action="/create/" method="POST">
+                    <form action="/createuser/" method="POST">
                     {% csrf_token %}
                         <div class="input-field col s3">
                             <i class="fa fa-graduation-cap prefix"></i>
-                            <input id="registration" type="text" class="validate" placeholder="Matrícula">
+                            <input id="registration" name="registration" type="text" class="validate" placeholder="Matrícula">
                         </div>
                         <div class="input-field col s3">
                             <i class="fa fa-user prefix"></i>
-                            <input id="first_name" type="text" class="validate" placeholder="Nome">
+                            <input id="first_name" name="first_name" type="text" class="validate" placeholder="Nome">
                         </div>
                         <div class="input-field col s3">
                             <i class="fa fa-envelope prefix"></i>
-                            <input id="email" type="text" class="validate" placeholder="Email">
+                            <input id="email" type="text" name="email" class="validate" placeholder="Email">
                         </div>
                         <div class="input-field col s3">
                             <i class="fa fa-user prefix"></i>
