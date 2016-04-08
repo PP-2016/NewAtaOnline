@@ -14,7 +14,7 @@ class Index(View):
     def get(self, request):
         """Index."""
         if request.user.is_authenticated():
-            respond_view = redirect('/')
+            respond_view = render_to_response('index.html')
         else:
             respond_view = render_to_response(
                 'login.html', context_instance=RequestContext(request))
@@ -67,7 +67,7 @@ class SignUp(View):
         new_student.username = request_username
         new_student.password = request_password
         new_student.first_name = request_first_name
-        new_student.number_id = request_number_id
+        new_student.student_registration = request_number_id
         new_student.email = request_email
 
         new_student.save()
