@@ -14,7 +14,7 @@ class Index(View):
     def get(self, request):
         """Index."""
         if request.user.is_authenticated():
-            respond_view = redirect('home')
+            respond_view = redirect('/')
         else:
             respond_view = render_to_response(
                 'login.html', context_instance=RequestContext(request))
@@ -28,15 +28,15 @@ class Login(View):
 
     def post(self, request):
         """Loggin method."""
-        request_username = request.POST.get('username')
-        request_password = request.POST.get('password')
+        request_username = request.POST['username']
+        request_password = request.POST['password']
 
         user = authenticate(username=request_username,
                             password=request_password)
-        if user is not None:
+        if user:
             if user.is_active:
                 login(request, user)
-                respond_view = redirect('/home/')
+                respond_view = redirect('/')
             else:
                 respond_view = render_to_response('UserOff.html')
         else:
