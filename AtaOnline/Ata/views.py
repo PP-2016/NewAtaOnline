@@ -55,11 +55,11 @@ class Logout(View):
 
     http_method_names = [u'get', u'post']
 
-    def post(self, request):
+    def get(self, request):
         """Logout post access method."""
         # user = authenticate(username=req_username, password=req_password)
         logout(request)
-        return redirect('login/')
+        return redirect('login')
 
 
 class SignUp(View):
