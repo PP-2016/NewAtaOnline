@@ -21,11 +21,10 @@ class Professor(User):
     objects = UserManager()
 
 
-class Avaliation(models.Model):
-    """Avaliation from a Professor for a Student's Notebook."""
+# class Avaliation(models.Model):
+#     """Avaliation from a Professor for a Student's Notebook."""
 
-    avaliation = models.IntegerField(default=0)
-
+#     avaliation = models.IntegerField(default=0)
 
 class Notebook(models.Model):
     """Student's Notebook for class of Experimental Fisics."""
@@ -34,4 +33,4 @@ class Notebook(models.Model):
     title = models.CharField(max_length=50)
     date = models.DateField(auto_now=True)
     content = models.CharField(max_length=250)
-    grade = models.ForeignKey(Avaliation)
+    grade = models.IntegerField(default=0)
