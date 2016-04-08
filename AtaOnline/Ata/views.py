@@ -1,6 +1,6 @@
 """Django views."""
 from django.shortcuts import render_to_response, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from django.template import RequestContext
 from .models import Student
@@ -47,7 +47,19 @@ class Login(View):
     def get(self, request):
         """Get Method for Login."""
         return render_to_response(
-            'create_user.html', context_instance=RequestContext(request))
+            'login.html', context_instance=RequestContext(request))
+
+
+class Logout(View):
+    """Class to access method to log out a user."""
+
+    http_method_names = [u'get', u'post']
+
+    def post(self, request):
+        """Logout post access method."""
+        # user = authenticate(username=req_username, password=req_password)
+        logout(request)
+        return redirect('login/')
 
 
 class SignUp(View):
