@@ -1,24 +1,24 @@
 """Models for Ata."""
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, UserManager
 
 # Create your models here.
 
 
-class Student(models.Model):
+class Student(User):
     """Student's docstring."""
 
-    user = models.ForeignKey(User)
-    number_id = models.IntegerField()
+    student_registration = models.IntegerField()
+    objects = UserManager()
 
 
-class Professor(models.Model):
+class Professor(User):
     """Professor's docstring."""
 
-    user = models.ForeignKey(User)
-    number_id = models.IntegerField()
+    professor_registration = models.IntegerField()
     formation = models.CharField(max_length=200)
+    objects = UserManager()
 
 
 class Avaliation(models.Model):
