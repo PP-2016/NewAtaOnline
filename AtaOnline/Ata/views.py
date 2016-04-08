@@ -1,5 +1,5 @@
 """Django views."""
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from django.template import RequestContext
@@ -69,11 +69,11 @@ class SignUp(View):
 
     def post(self, request):
         """Get all information and creat a user."""
-        request_username = request.POST.get('username')
-        request_password = request.POST.get('password')
-        request_first_name = request.POST.get('first_name')
-        request_number_id = request.POST.get('registration')
-        request_email = request.POST.get('email')
+        request_username = request.POST['username']
+        request_password = request.POST['password']
+        request_first_name = request.POST['first_name']
+        request_number_id = request.POST['registration']
+        request_email = request.POST['email']
 
         new_student = Student()
         new_student.username = request_username
@@ -84,8 +84,8 @@ class SignUp(View):
 
         new_student.save()
 
-        return render_to_response(
-            "Funcionou.html", context_instance=RequestContext(request))
+        return redirect('login')
+        # render(request, 'login.html', {})
 
     def get(self, request):
         """Get method for CreateUser."""

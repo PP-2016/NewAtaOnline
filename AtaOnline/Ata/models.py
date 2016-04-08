@@ -24,13 +24,14 @@ class Professor(User):
 class Avaliation(models.Model):
     """Avaliation from a Professor for a Student's Notebook."""
 
-    record = models.ForeignKey('Notebook')
+    avaliation = models.IntegerField(default=0)
 
 
 class Notebook(models.Model):
     """Student's Notebook for class of Experimental Fisics."""
 
+    user = models.ForeignKey(User)
     title = models.CharField(max_length=50)
     date = models.DateField(auto_now=True)
     content = models.CharField(max_length=250)
-    grade = models.ForeignKey('Avaliation')
+    grade = models.ForeignKey(Avaliation)
